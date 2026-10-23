@@ -28,7 +28,6 @@ This project is an enterprise-grade, fully normalized relational database system
 | **Step 6** | `database/hotel_procedures_triggers.sql`, `database/test_verification_suite.sql`, `reports/Step6_Procedures_Triggers_Report.docx` | Active business logic: 3 stored procedures, 6 database triggers (date validation, double-booking shield, auto-billing, payment audits, deposit caps, room capacity). |
 | **Step 7** | `database/hotel_user_management.sql`, `reports/Step7_User_Management_Report.docx` | Departmental User Management & Security: 5 user accounts, granular DCL permissions, privilege revocation (`REVOKE DELETE`), and account hardening. |
 | **Java** | `backend_java/` | Complete Core Java JDBC console application with 5 departmental role terminals and cancellation/refund engine. |
-| **UI** | `hotel_frontend_mockup.html` | Interactive multi-role front-end terminal featuring dedicated dashboards for Front Desk, General Manager, Cashier, Housekeeping, and DBA. |
 
 ---
 
@@ -55,7 +54,6 @@ Hotel-Management-System/
 │   └── run.bat                  # One-Click UTF-8 Compile & Launch Script
 ├── ER diagram.jpeg              # Step 1: Conceptual ER Diagram
 ├── Hotel_Management_Relational_Schema_Updated 2.png # Step 2: Relational Schema
-├── hotel_frontend_mockup.html   # Interactive Visual Multi-Role Dashboard
 └── README.md                    # Project Architecture & Setup Guide
 ```
 
@@ -178,11 +176,3 @@ The repository includes an interactive console application written in pure Core 
 1. Navigate to the `backend_java/` folder.
 2. Double-click `run.bat` (or execute `run.bat` from Command Prompt).
 3. The batch script automatically compiles source files with UTF-8 encoding and launches the terminal.
-
----
-
-## 🖥️ Interactive Front-End Terminal
-Open `hotel_frontend_mockup.html` in any web browser to access:
-* **Interactive Floor Map:** Real-time room status with color-coded badges and 1-click room allotment.
-* **Role Switcher:** Dynamic persona switching between Front Desk, General Manager, Cashier, Housekeeping, and DBA.
-* **Tax Invoice Generator:** Printable receipt generator with GSTIN and service breakdowns.
