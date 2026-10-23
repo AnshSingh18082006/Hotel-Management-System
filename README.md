@@ -16,18 +16,48 @@ This project is an enterprise-grade, fully normalized relational database system
 
 ---
 
-## 🗂️ 7-Step Academic Deliverables Breakdown
+## 📁 7-Step Academic Deliverables Breakdown
 
 | Step | Deliverable File(s) | Description |
 | :--- | :--- | :--- |
-| **Step 1** | `Step1_ER_Diagram.html`, `ER diagram.jpeg` | Conceptual Entity-Relationship model utilizing Chen notation, weak entity identifiers, multivalued double-ovals, and Crow's Foot cardinality. |
-| **Step 2** | `Step2_Relational_Schema_Diagram.html`, `Relational Schema.jpeg` | Relational table schema strictly mapping Primary Key (PK) to Foreign Key (FK) dependencies with referential cascade rules. |
-| **Step 3** | `Step3_Normalization_Report.docx` | Rigorous formal normalization decomposition from Unnormalized Form (**UNF**) $\rightarrow$ **1NF** $\rightarrow$ **2NF** $\rightarrow$ **3NF** $\rightarrow$ **BCNF**. |
-| **Step 4** | `hotel_schema_ddl.sql`, `Step4_DDL_Queries_Report.docx` | Complete Data Definition Language (DDL) creating all 13 tables, primary/foreign keys, domain checks, unique constraints, and B-tree indexes. |
-| **Step 5** | `hotel_queries_dml.sql`, `Step5_DML_Queries_Report.docx` | Comprehensive DML suite: sample data inserts, 6-table joins, aggregate queries (`GROUP BY / HAVING`), nested subqueries, and updates. |
-| **Step 6** | `hotel_procedures_triggers.sql`, `test_verification_suite.sql`, `Step6_Procedures_Triggers_Report.docx` | Active business logic: 3 stored procedures, 6 database triggers (date validation, double-booking shield, auto-billing, payment audits, deposit caps, room capacity). |
-| **Step 7** | `hotel_user_management.sql`, `Step7_User_Management_Report.docx` | Departmental User Management & Security: 5 user accounts, granular DCL permissions, privilege revocation (`REVOKE DELETE`), and account hardening. |
+| **Step 1** | `ER diagram.jpeg` | Conceptual Entity-Relationship model utilizing Chen notation, weak entity identifiers, multivalued double-ovals, and Crow's Foot cardinality. |
+| **Step 2** | `Hotel_Management_Relational_Schema_Updated 2.png` | Relational table schema strictly mapping Primary Key (PK) to Foreign Key (FK) dependencies with referential cascade rules. |
+| **Step 3** | `reports/Step3_Normalization_Report.docx` | Rigorous formal normalization decomposition from Unnormalized Form (**UNF**) $\rightarrow$ **1NF** $\rightarrow$ **2NF** $\rightarrow$ **3NF** $\rightarrow$ **BCNF**. |
+| **Step 4** | `database/hotel_schema_ddl.sql`, `reports/Step4_DDL_Queries_Report.docx` | Complete Data Definition Language (DDL) creating all 14 tables, primary/foreign keys, domain checks, unique constraints, and B-tree indexes. |
+| **Step 5** | `database/hotel_queries_dml.sql`, `reports/Step5_DML_Queries_Report.docx` | Comprehensive DML suite: sample data inserts, 6-table joins, aggregate queries (`GROUP BY / HAVING`), nested subqueries, and updates. |
+| **Step 6** | `database/hotel_procedures_triggers.sql`, `database/test_verification_suite.sql`, `reports/Step6_Procedures_Triggers_Report.docx` | Active business logic: 3 stored procedures, 6 database triggers (date validation, double-booking shield, auto-billing, payment audits, deposit caps, room capacity). |
+| **Step 7** | `database/hotel_user_management.sql`, `reports/Step7_User_Management_Report.docx` | Departmental User Management & Security: 5 user accounts, granular DCL permissions, privilege revocation (`REVOKE DELETE`), and account hardening. |
+| **Java** | `backend_java/` | Complete Core Java JDBC console application with 5 departmental role terminals and cancellation/refund engine. |
 | **UI** | `hotel_frontend_mockup.html` | Interactive multi-role front-end terminal featuring dedicated dashboards for Front Desk, General Manager, Cashier, Housekeeping, and DBA. |
+
+---
+
+## 📂 Repository Structure
+
+```
+Hotel-Management-System/
+├── database/                    # All MySQL Relational Scripts
+│   ├── hotel_schema_ddl.sql     # Step 4: 14 Tables DDL, Constraints, Indexes
+│   ├── hotel_queries_dml.sql    # Step 5: DML Inserts, Joins, Aggregations
+│   ├── hotel_procedures_triggers.sql # Step 6: 3 Procedures & 6 Triggers
+│   ├── hotel_user_management.sql# Step 7: 5 Users, RBAC, DCL Grants
+│   └── test_verification_suite.sql # Automated Unit Test Cases 1-10
+├── reports/                     # Formal Academic Documentation (DOCX)
+│   ├── Step3_Normalization_Report.docx
+│   ├── Step4_DDL_Queries_Report.docx
+│   ├── Step5_DML_Queries_Report.docx
+│   ├── Step6_Procedures_Triggers_Report.docx
+│   └── Step7_User_Management_Report.docx
+├── backend_java/                # Core Java JDBC Terminal Application
+│   ├── src/com/hotel/           # Source Code (HotelApp, DAOs, DBConnection)
+│   ├── lib/                     # mysql-connector-j-9.1.0.jar
+│   ├── db.properties            # Database Configuration (Auto-Persisted)
+│   └── run.bat                  # One-Click UTF-8 Compile & Launch Script
+├── ER diagram.jpeg              # Step 1: Conceptual ER Diagram
+├── Hotel_Management_Relational_Schema_Updated 2.png # Step 2: Relational Schema
+├── hotel_frontend_mockup.html   # Interactive Visual Multi-Role Dashboard
+└── README.md                    # Project Architecture & Setup Guide
+```
 
 ---
 
@@ -107,20 +137,20 @@ This project is an enterprise-grade, fully normalized relational database system
 To load the complete system into your local MySQL server:
 
 ```sql
--- Step 1: Create Database & Tables (12 tables + constraints)
-source hotel_schema_ddl.sql;
+-- Step 1: Create Database & Tables (14 tables + domain constraints)
+source database/hotel_schema_ddl.sql;
 
 -- Step 2: Insert Realistic Sample Data
-source hotel_queries_dml.sql;
+source database/hotel_queries_dml.sql;
 
 -- Step 3: Register Stored Procedures & Triggers
-source hotel_procedures_triggers.sql;
+source database/hotel_procedures_triggers.sql;
 
 -- Step 4: Configure Users & Security Policies
-source hotel_user_management.sql;
+source database/hotel_user_management.sql;
 
 -- Step 5: Run Automated Verification Suite (10 Comprehensive Tests)
-source test_verification_suite.sql;
+source database/test_verification_suite.sql;
 ```
 
 ---
