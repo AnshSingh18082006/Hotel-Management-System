@@ -6,25 +6,7 @@
 
 ---
 
-## 📌 1. Formal Chen Notation Reference Sheet
-
-When presenting your ER diagram to your teacher or viva examiner, use these standard academic terms:
-
-| ER Component | Chen Graphical Symbol | Meaning & Application in our Hotel Model |
-| :--- | :--- | :--- |
-| **Regular Entity** | Single Rectangle `[ ]` | An independent, tangible object with its own primary key (e.g., `CUSTOMER`, `ROOM`, `STAFF`, `PAYMENT`). |
-| **Weak Entity** | Double Rectangle `[[ ]]` | An entity that cannot exist without its parent entity and lacks a standalone primary key (e.g., `BILL` depends on `BOOKING`). |
-| **Identifying Relationship** | Double Diamond `<◇>` | Links a weak entity to its identifying parent entity (e.g., `GENERATES` relationship between `BOOKING` and `BILL`). |
-| **Primary Key (PK)** | Underlined Oval `(_id_)` | The unique identifier attribute for an entity (e.g., <u>`customer_id`</u>, <u>`room_id`</u>). |
-| **Multivalued Attribute** | Double Oval `(( ))` | An attribute holding multiple values for a single entity (e.g., `(( alternate_no ))` for a Customer). |
-| **Derived Attribute** | Dashed Oval `(- -)` | An attribute dynamically calculated from other stored attributes (e.g., `(- duration -)` computed from check-in and check-out dates). |
-| **Partial Key (Discriminator)**| Dashed Underline `_ _` | Attribute distinguishing occurrences of a weak entity under the same owner (e.g., `_bill_id_`). |
-| **Total Participation** | Double Line `===` | Every instance of the entity **must** participate in the relationship (Mandatory / 100% participation). |
-| **Partial Participation** | Single Line `───` | Some instances of the entity may not participate in the relationship (Optional participation). |
-
----
-
-## 🔍 2. Rule-by-Rule Explanation Guide (With Oral Exam Explanations)
+## 🔍 2. Rule-by-Rule Explanation Guide
 
 Here is how each of your **10 Business Rules** maps to the ER Diagram:
 
@@ -235,15 +217,5 @@ erDiagram
         int department_id FK
     }
 ```
-
----
-
-## 🎓 4. Rapid Oral Exam / Viva Voce Cheat Sheet
-
-| Question | What the Examiner is Testing | Your Confident Answer |
-| :--- | :--- | :--- |
-| **"Why is `BILL` a Weak Entity?"** | Understanding of entity existence dependencies. | *"Because an invoice bill cannot exist in the real world without a booking transaction. If the booking is deleted, the bill loses all legal meaning and primary key context."* |
-| **"Why is stay duration drawn with a dashed oval?"** | Knowledge of Chen attribute classifications. | *"Because duration is a **derived attribute**. It is computed dynamically at query time (`check_out_date - check_in_date`) to prevent data redundancy and update anomalies."* |
-| **"How do you resolve the $M:N$ relationship between Booking and Room?"** | Understanding of Relational Decomposition. | *"Relational database engines cannot directly enforce $M:N$ foreign keys. We resolve this by introducing an associative junction entity (`Booking_Room`) with composite foreign keys."* |
 | **"What does the double line on `ROOM` $\rightarrow$ `ROOM_TYPE` indicate?"** | Understanding of participation constraints. | *"It signifies **Total / Mandatory Participation**. Every room must belong to a room type; an unclassified room is illegal in the database schema."* |
 | **"Why is `alternate_no` in a double oval?"** | First Normal Form (1NF) normalization theory. | *"It is a **multivalued attribute**. Storing comma-separated phone numbers violates 1NF atomicity, so Chen notation flags it with a double oval, decomposed into `Customer_Alternate_No`."* |
