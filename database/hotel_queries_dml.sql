@@ -1,7 +1,4 @@
-
 USE hotel_management_db;
-
-
 
 -- 1.1 Insert Departments
 INSERT INTO Department (department_id, name) VALUES
