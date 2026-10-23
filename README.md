@@ -21,7 +21,7 @@ This project is an enterprise-grade, fully normalized relational database system
 | Step | Deliverable File(s) | Description |
 | :--- | :--- | :--- |
 | **Step 1** | `ER diagram.jpeg`, [`ER_DIAGRAM_SPECIFICATION.md`](ER_DIAGRAM_SPECIFICATION.md) | Conceptual Entity-Relationship model utilizing Chen notation, weak entity identifiers, multivalued double-ovals, and Crow's Foot cardinality. |
-| **Step 2** | `Hotel_Management_Relational_Schema_Updated 2.png` | Relational table schema strictly mapping Primary Key (PK) to Foreign Key (FK) dependencies with referential cascade rules. |
+| **Step 2** | `Relational_Schema.jpeg` | Relational table schema strictly mapping Primary Key (PK) to Foreign Key (FK) dependencies with referential cascade rules. |
 | **Step 3** | `reports/Step3_Normalization_Report.docx` | Rigorous formal normalization decomposition from Unnormalized Form (**UNF**) $\rightarrow$ **1NF** $\rightarrow$ **2NF** $\rightarrow$ **3NF** $\rightarrow$ **BCNF**. |
 | **Step 4** | `database/hotel_schema_ddl.sql`, `reports/Step4_DDL_Queries_Report.docx` | Complete Data Definition Language (DDL) creating all 14 tables, primary/foreign keys, domain checks, unique constraints, and B-tree indexes. |
 | **Step 5** | `database/hotel_queries_dml.sql`, `reports/Step5_DML_Queries_Report.docx` | Comprehensive DML suite: sample data inserts, 6-table joins, aggregate queries (`GROUP BY / HAVING`), nested subqueries, and updates. |
@@ -53,7 +53,7 @@ Hotel-Management-System/
 │   └── run.bat                  # One-Click UTF-8 Compile & Launch Script
 ├── ER diagram.jpeg              # Step 1: Conceptual ER Diagram
 ├── ER_DIAGRAM_SPECIFICATION.md  # Step 1: Formal ER Rules & Chen Notation Guide
-├── Hotel_Management_Relational_Schema_Updated 2.png # Step 2: Relational Schema
+├── Relational_Schema.jpeg           # Step 2: Relational Schema
 └── README.md                    # Project Architecture & Setup Guide
 ```
 
