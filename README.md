@@ -20,7 +20,7 @@ This project is an enterprise-grade, fully normalized relational database system
 
 | Step | Deliverable File(s) | Description |
 | :--- | :--- | :--- |
-| **Step 1** | `ER diagram.jpeg` | Conceptual Entity-Relationship model utilizing Chen notation, weak entity identifiers, multivalued double-ovals, and Crow's Foot cardinality. |
+| **Step 1** | `ER diagram.jpeg`, [`ER_DIAGRAM_SPECIFICATION.md`](ER_DIAGRAM_SPECIFICATION.md) | Conceptual Entity-Relationship model utilizing Chen notation, weak entity identifiers, multivalued double-ovals, and Crow's Foot cardinality. |
 | **Step 2** | `Hotel_Management_Relational_Schema_Updated 2.png` | Relational table schema strictly mapping Primary Key (PK) to Foreign Key (FK) dependencies with referential cascade rules. |
 | **Step 3** | `reports/Step3_Normalization_Report.docx` | Rigorous formal normalization decomposition from Unnormalized Form (**UNF**) $\rightarrow$ **1NF** $\rightarrow$ **2NF** $\rightarrow$ **3NF** $\rightarrow$ **BCNF**. |
 | **Step 4** | `database/hotel_schema_ddl.sql`, `reports/Step4_DDL_Queries_Report.docx` | Complete Data Definition Language (DDL) creating all 14 tables, primary/foreign keys, domain checks, unique constraints, and B-tree indexes. |
@@ -52,6 +52,7 @@ Hotel-Management-System/
 │   ├── db.properties            # Database Configuration (Auto-Persisted)
 │   └── run.bat                  # One-Click UTF-8 Compile & Launch Script
 ├── ER diagram.jpeg              # Step 1: Conceptual ER Diagram
+├── ER_DIAGRAM_SPECIFICATION.md  # Step 1: Formal ER Rules & Chen Notation Guide
 ├── Hotel_Management_Relational_Schema_Updated 2.png # Step 2: Relational Schema
 └── README.md                    # Project Architecture & Setup Guide
 ```
