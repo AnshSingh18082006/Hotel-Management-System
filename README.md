@@ -25,7 +25,7 @@ This project is an enterprise-grade, fully normalized relational database system
 | **Step 3** | `reports/Step3_Normalization_Report.docx` | Rigorous formal normalization decomposition from Unnormalized Form (**UNF**) $\rightarrow$ **1NF** $\rightarrow$ **2NF** $\rightarrow$ **3NF** $\rightarrow$ **BCNF**. |
 | **Step 4** | `database/hotel_schema_ddl.sql`, `reports/Step4_DDL_Queries_Report.docx` | Complete Data Definition Language (DDL) creating all 14 tables, primary/foreign keys, domain checks, unique constraints, and B-tree indexes. |
 | **Step 5** | `database/hotel_queries_dml.sql`, `reports/Step5_DML_Queries_Report.docx` | Comprehensive DML suite: sample data inserts, 6-table joins, aggregate queries (`GROUP BY / HAVING`), nested subqueries, and updates. |
-| **Step 6** | `database/hotel_procedures_triggers.sql`, `database/test_verification_suite.sql`, `reports/Step6_Procedures_Triggers_Report.docx` | Active business logic: 3 stored procedures, 6 database triggers (date validation, double-booking shield, auto-billing, payment audits, deposit caps, room capacity). |
+| **Step 6** | `database/hotel_procedures_triggers.sql`, `reports/Step6_Procedures_Triggers_Report.docx` | Active business logic: 3 stored procedures, 6 database triggers (date validation, double-booking shield, auto-billing, payment audits, deposit caps, room capacity). |
 | **Step 7** | `database/hotel_user_management.sql`, `reports/Step7_User_Management_Report.docx` | Departmental User Management & Security: 5 user accounts, granular DCL permissions, privilege revocation (`REVOKE DELETE`), and account hardening. |
 | **Java** | `backend_java/` | Complete Core Java JDBC console application with 5 departmental role terminals and cancellation/refund engine. |
 
@@ -39,8 +39,7 @@ Hotel-Management-System/
 │   ├── hotel_schema_ddl.sql     # Step 4: 14 Tables DDL, Constraints, Indexes
 │   ├── hotel_queries_dml.sql    # Step 5: DML Inserts, Joins, Aggregations
 │   ├── hotel_procedures_triggers.sql # Step 6: 3 Procedures & 6 Triggers
-│   ├── hotel_user_management.sql# Step 7: 5 Users, RBAC, DCL Grants
-│   └── test_verification_suite.sql # Automated Unit Test Cases 1-10
+│   └── hotel_user_management.sql# Step 7: 5 Users, RBAC, DCL Grants
 ├── reports/                     # Formal Academic Documentation (DOCX)
 │   ├── Step3_Normalization_Report.docx
 │   ├── Step4_DDL_Queries_Report.docx
@@ -146,9 +145,6 @@ source database/hotel_procedures_triggers.sql;
 
 -- Step 4: Configure Users & Security Policies
 source database/hotel_user_management.sql;
-
--- Step 5: Run Automated Verification Suite (10 Comprehensive Tests)
-source database/test_verification_suite.sql;
 ```
 
 ---
