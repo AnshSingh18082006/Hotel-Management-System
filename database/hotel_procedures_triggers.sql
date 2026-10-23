@@ -10,9 +10,7 @@ CREATE TABLE IF NOT EXISTS Payment_Audit_Log (
 
 DELIMITER $$
 
--- ----------------------------------------------------------------------------
 -- 1.1 Procedure: Check Room Availability for Given Dates and Room Type
--- ----------------------------------------------------------------------------
 DROP PROCEDURE IF EXISTS sp_CheckRoomAvailability$$
 CREATE PROCEDURE sp_CheckRoomAvailability(
     IN p_room_type_id INT,
@@ -38,10 +36,9 @@ BEGIN
       );
 END$$
 
--- ----------------------------------------------------------------------------
 -- 1.2 Procedure: Generate/Recalculate Final Bill for a Booking
 -- Computes (Nights * Room_Price) + SUM(Services Cost)
--- ----------------------------------------------------------------------------
+    
 DROP PROCEDURE IF EXISTS sp_CalculateFinalBill$$
 CREATE PROCEDURE sp_CalculateFinalBill(
     IN p_booking_id INT
@@ -99,9 +96,8 @@ BEGIN
         END AS settlement_status;
 END$$
 
--- ----------------------------------------------------------------------------
 -- 1.3 Procedure: Customer Booking History Dossier
--- ----------------------------------------------------------------------------
+
 DROP PROCEDURE IF EXISTS sp_GetCustomerHistory$$
 CREATE PROCEDURE sp_GetCustomerHistory(
     IN p_customer_id INT
@@ -130,11 +126,9 @@ BEGIN
     ORDER BY b.check_in_date DESC;
 END$$
 
-
--- ----------------------------------------------------------------------------
 -- 2.1 Trigger: Validate Booking Dates Before Insertion
 -- Ensures check_in_date < check_out_date
--- ----------------------------------------------------------------------------
+    
 DROP TRIGGER IF EXISTS trg_ValidateBookingDates$$
 CREATE TRIGGER trg_ValidateBookingDates
 BEFORE INSERT ON Booking
@@ -180,10 +174,9 @@ BEGIN
     END IF;
 END$$
 
--- ----------------------------------------------------------------------------
 -- 2.3 Trigger: Automatically Add Service Cost to Bill on New Service Order
 -- Fires AFTER INSERT on Booking_Service
--- ----------------------------------------------------------------------------
+
 DROP TRIGGER IF EXISTS trg_AutoUpdateBillOnService$$
 CREATE TRIGGER trg_AutoUpdateBillOnService
 AFTER INSERT ON Booking_Service
@@ -202,10 +195,10 @@ BEGIN
     WHERE booking_id = NEW.booking_id;
 END$$
 
--- ----------------------------------------------------------------------------
+
 -- 2.4 Trigger: Audit Log for Every Recorded Payment
 -- Fires AFTER INSERT on Payment
--- ----------------------------------------------------------------------------
+
 DROP TRIGGER IF EXISTS trg_AuditPaymentLog$$
 CREATE TRIGGER trg_AuditPaymentLog
 AFTER INSERT ON Payment
@@ -215,12 +208,11 @@ BEGIN
     VALUES (NEW.payment_id, NEW.amount, NEW.payment_method);
 END$$
 
--- ----------------------------------------------------------------------------
 -- 2.5 Trigger: Financial Governance - Prevent Exorbitant Overpayment
 -- Fires BEFORE INSERT on Booking_Room
 -- Caps maximum advance deposit to 150% of estimated stay cost (allows incidentals)
 -- Blocks extreme overpayments (e.g. 10 lac for a 22k room) under PMLA compliance
--- ----------------------------------------------------------------------------
+
 DROP TRIGGER IF EXISTS trg_ValidateAdvancePaymentCeiling$$
 CREATE TRIGGER trg_ValidateAdvancePaymentCeiling
 BEFORE INSERT ON Booking_Room
@@ -245,10 +237,9 @@ BEGIN
     END IF;
 END$$
 
--- ----------------------------------------------------------------------------
 -- 2.6 Trigger: Enforce Maximum Room Legal Capacity for Multiple Occupants (Couples)
 -- Fires BEFORE INSERT on Booking_Guest
--- ----------------------------------------------------------------------------
+
 DROP TRIGGER IF EXISTS trg_EnforceRoomCapacity$$
 CREATE TRIGGER trg_EnforceRoomCapacity
 BEFORE INSERT ON Booking_Guest
