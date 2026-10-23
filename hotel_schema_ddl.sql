@@ -98,6 +98,7 @@ CREATE TABLE Booking (
     payment_id INT NULL,
     check_in_date DATE NOT NULL,
     check_out_date DATE NOT NULL,
+    booking_status VARCHAR(20) DEFAULT 'CONFIRMED',
     CONSTRAINT pk_booking PRIMARY KEY (booking_id),
     CONSTRAINT chk_booking_dates CHECK (check_out_date > check_in_date),
     CONSTRAINT fk_booking_customer FOREIGN KEY (customer_id)
@@ -176,6 +177,16 @@ CREATE TABLE IF NOT EXISTS Booking_Guest (
         REFERENCES Booking (booking_id)
         ON DELETE CASCADE
         ON UPDATE CASCADE
+);
+
+-- 3.4 Payment_Audit_Log Table (Security Audit Trail for Financial Transactions)
+CREATE TABLE IF NOT EXISTS Payment_Audit_Log (
+    log_id INT AUTO_INCREMENT,
+    payment_id INT NOT NULL,
+    amount DECIMAL(10, 2) NOT NULL,
+    payment_method VARCHAR(50) NOT NULL,
+    recorded_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT pk_payment_audit_log PRIMARY KEY (log_id)
 );
 
 CREATE INDEX idx_booking_customer ON Booking (customer_id);

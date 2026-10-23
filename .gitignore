@@ -12,3 +12,7 @@ $RECYCLE.BIN/
 *.tmp
 *.log
 *.swp
+
+# Java Bytecode Build Output
+*.class
+backend_java/bin/

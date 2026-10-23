@@ -31,7 +31,7 @@ This project is an enterprise-grade, fully normalized relational database system
 
 ---
 
-## 🏛️ Database Schema Architecture (13 Tables)
+## 🏛️ Database Schema Architecture (12 Tables)
 
 ```
                             ┌───────────────┐
@@ -107,7 +107,7 @@ This project is an enterprise-grade, fully normalized relational database system
 To load the complete system into your local MySQL server:
 
 ```sql
--- Step 1: Create Database & Tables (13 tables + constraints)
+-- Step 1: Create Database & Tables (12 tables + constraints)
 source hotel_schema_ddl.sql;
 
 -- Step 2: Insert Realistic Sample Data
@@ -122,6 +122,32 @@ source hotel_user_management.sql;
 -- Step 5: Run Automated Verification Suite (10 Comprehensive Tests)
 source test_verification_suite.sql;
 ```
+
+---
+
+## ☕ Pure Java JDBC Multi-Role Terminal Application (`backend_java/`)
+
+The repository includes an interactive console application written in pure Core Java using standard JDBC (`mysql-connector-j-9.1.0.jar`):
+
+### Key Capabilities:
+* **Department Role Switcher:** Switch between 5 terminals on the fly:
+  1. `[1] Receptionist Terminal`: Availability check, walk-in check-in (ACID), couple/occupant registration, active reservations lookup.
+  2. `[2] Housekeeping Terminal`: Real-time room inspection matrix (Floors 1-4, `OCCUPIED` vs `CLEAN & VACANT`), staff directory.
+  3. `[3] Billing & Cashier Terminal`: Final tax invoice (`sp_CalculateFinalBill`), room amenity charges (`trg_AutoUpdateBillOnService`), cancellation refunds, payment audit logs.
+  4. `[4] General Manager Terminal`: Executive KPI revenue summary, lifetime customer stay history (`sp_GetCustomerHistory`).
+  5. `[5] Database Administrator Terminal`: Active trigger inspection, table health & row count metrics.
+* **Booking Cancellation & Automated Refund Engine:**
+  - Dynamic refund calculation: $>48$ hrs ($80\%$ refund), $<48$ hrs ($50\%$ refund), past check-in ($0\%$).
+  - Releases room inventory immediately and logs refund transactions in `Payment_Audit_Log`.
+* **Data Sanitization & Integrity:**
+  - Strict 10-digit phone verification (`^[6-9]\d{9}$`).
+  - Standard email validation.
+* **Persistent Connection:** Auto-saves credentials in `db.properties` on first successful connection.
+
+### How to Run:
+1. Navigate to the `backend_java/` folder.
+2. Double-click `run.bat` (or execute `run.bat` from Command Prompt).
+3. The batch script automatically compiles source files with UTF-8 encoding and launches the terminal.
 
 ---
 

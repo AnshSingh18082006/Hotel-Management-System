@@ -34,6 +34,7 @@ BEGIN
           FROM Booking_Room br
           JOIN Booking b ON br.booking_id = b.booking_id
           WHERE (b.check_in_date < p_check_out AND b.check_out_date > p_check_in)
+            AND (b.booking_status IS NULL OR b.booking_status != 'CANCELLED')
       );
 END$$
 
@@ -170,7 +171,8 @@ BEGIN
     FROM Booking_Room br
     JOIN Booking b ON br.booking_id = b.booking_id
     WHERE br.room_id = NEW.room_id
-      AND (b.check_in_date < v_new_check_out AND b.check_out_date > v_new_check_in);
+      AND (b.check_in_date < v_new_check_out AND b.check_out_date > v_new_check_in)
+      AND (b.booking_status IS NULL OR b.booking_status != 'CANCELLED');
 
     IF v_overlap_count > 0 THEN
         SIGNAL SQLSTATE '45000'
